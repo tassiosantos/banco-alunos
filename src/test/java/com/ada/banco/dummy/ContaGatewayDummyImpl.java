@@ -26,6 +26,7 @@ public class ContaGatewayDummyImpl implements ContaGateway {
 
     @Override
     public Conta salvar(Conta conta) {
-        return null;
+        contas.put(conta.getCpf(), conta);
+        return conta;
     }
-}
+    }

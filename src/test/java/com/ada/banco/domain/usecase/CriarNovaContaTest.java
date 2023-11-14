@@ -25,5 +25,22 @@ public class CriarNovaContaTest {
     }
 
 
+    @Test
+    public void deveCriarUmaContaComSucesso() throws Exception {
+        ContaGateway contaGatewayDummy = new ContaGatewayDummyImpl();
+
+        CriarNovaConta criarNovaConta = new CriarNovaConta(contaGatewayDummy);
+
+        Conta novaConta = new Conta(111L, 0001L, 1234L, new BigDecimal("1000.00"), "Alice", "12345678911");
+
+        Conta contaCriada = criarNovaConta.execute(novaConta);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(111L, contaCriada.getId()),
+                () -> Assertions.assertEquals("Alice", contaCriada.getTitular())
+        );
+
+    }
+
 
 }
