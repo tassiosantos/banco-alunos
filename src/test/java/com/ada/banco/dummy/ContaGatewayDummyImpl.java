@@ -29,4 +29,20 @@ public class ContaGatewayDummyImpl implements ContaGateway {
         contas.put(conta.getCpf(), conta);
         return conta;
     }
+
+    @Override
+    public void sacar(Conta conta, BigDecimal valorSaque){
+        Conta contaSalva = contas.get(conta.getCpf());
+        contaSalva.setSaldo(contaSalva.getSaldo().subtract(valorSaque));
+    }
+
+
+    @Override
+    public void encerrar(Conta conta){
+        contas.remove(conta.getCpf());
+    }
+
+
+
+
     }
